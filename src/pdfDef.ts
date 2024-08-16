@@ -6,39 +6,21 @@ const imageList: Record<string, ImageDefinition> = {
   },
 };
 export const pdfDef: TDocumentDefinitions = {
-  pageMargins: [65, 50, 65, 100],
-  header: {
-    columns: [
+  content: [{text: "Hello"},{
+    canvas: [
       {
-        image: 'logo',
-        alignment: 'right',
-        fit: [100, 100],
-        margin: [0, 0, 70, 0],
+        type: 'line',
+        x1: 0,
+        y1: 0,
+        x2: 514,
+        y2: 0,
+        lineWidth: 1,
+        lineColor: '#000000',
       },
     ],
-  },
-  content: [],
+  },{text: "Hello"},],
   images: imageList,
   defaultStyle: {
     font: 'Helvetica',
-  },
-  styles: {
-    header: {
-      fontSize: 16,
-      bold: true,
-      decoration: 'underline',
-      alignment: 'center',
-    },
-    content: {
-      fontSize: 10,
-      alignment: 'justify',
-      italics: true,
-    },
-    content1: {
-      fontSize: 10,
-      bold: true,
-      alignment: 'justify',
-      italics: true,
-    },
-  },
+  }
 };
