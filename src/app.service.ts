@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { Response } from 'express';
 import PdfPrinter from 'pdfmake';
 import { TFontDictionary } from 'pdfmake/interfaces';
 import { pdfDef } from './pdfDef';
@@ -33,14 +34,14 @@ const fonts: TFontDictionary = {
 
 @Injectable()
 export class AppService {
-  getHello(): string {
-    this.generatePdf();
+  getHello(res: Response): string {
+    this.generatePdf(res);
     return 'Hello World!';
   }
-  generatePdf = () => {
+  generatePdf = (res: Response) => {
     const pdfMake = new PdfPrinter(fonts);
     const pdfDoc = pdfMake.createPdfKitDocument(pdfDef);
-    pdfDoc.pipe(fs.createWriteStream('document.pdf'));
+    pdfDoc.pipe(res);
     pdfDoc.end();
   };
 }
